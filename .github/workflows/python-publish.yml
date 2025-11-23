@@ -1,0 +1,42 @@
+dance_moves = {
+    1: "دنس 1",
+    2: "دنس 2",
+    3: "دنس 3",
+    4: "دنس 4",
+    5: "دنس 5",
+    # ... ادامه تا 226
+    226: "دنس 226",
+}
+
+# تابع برای اجرای دنس
+def perform_dance(dance_number):
+    if dance_number in dance_moves:
+        print(f"✅ اجرای {dance_moves[dance_number]}...")
+    else:
+        print("❌ دنس نامشخص.")
+
+# تابع برای تلپورت به بازیکن
+def teleport_to_player(player_id):
+    print(f"🔮 تلپورت به بازیکن با ID: {player_id}")
+
+# تابع پردازش ورودی
+def process_command(command):
+    parts = command.split()
+    
+    if parts[0] == "summon!" and len(parts) > 1:
+        player_id = parts[1]
+        teleport_to_player(player_id)
+    elif parts[0].isdigit() and 1 <= int(parts[0]) <= 226:
+        dance_number = int(parts[0])
+        perform_dance(dance_number)
+    elif command in ["!tele", "کف", "بالا", "تم", "تم۲", "چمن", "چمن۲", "استایل", "استایل۲"]:
+        print("🚀 اجرای فرمان مربوطه...")
+    else:
+        print("❌ فرمان نامشخص.")
+
+# حلقه اصلی برای ورودی از کاربر
+print("🌟 به ربات بازی خوش آمدید! 🌟")
+while True:
+    command = input("⚡ فرمان خود را وارد کنید: ")
+    process_command(command)
+ 
